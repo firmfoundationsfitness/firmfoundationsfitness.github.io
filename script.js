@@ -53,3 +53,22 @@ form?.addEventListener('submit', async (event) => {
     button.textContent = 'I’m ready to start ↗';
   }
 });
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+.visit textarea {
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  padding: 11px 0;
+  margin-bottom: 22px;
+  outline: none;
+  resize: vertical;
+}
+
+.visit textarea:focus {
+  border-color: var(--blue-dark);
+}
