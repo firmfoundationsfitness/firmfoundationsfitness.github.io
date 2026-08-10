@@ -18,11 +18,38 @@ document.querySelector('.close-modal')?.addEventListener('click', closeModal);
 modal?.addEventListener('click', (event) => { if (event.target === modal) closeModal(); });
 document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && !modal.hidden) closeModal(); });
 
-document.querySelector('#visit-form')?.addEventListener('submit', (event) => {
+const form = document.querySelector('#visit-form');
+
+form?.addEventListener('submit', async (event) => {
   event.preventDefault();
-  const name = document.querySelector('#name').value.trim().split(' ')[0] || 'friend';
+
+  const button = form.querySelector('button');
   const note = document.querySelector('#form-note');
-  note.textContent = `Thanks, ${name}. We’ll be in touch soon.`;
-  note.style.fontWeight = '700';
-  event.target.querySelector('button').textContent = 'You’re on the list ✓';
+  const name = document.querySelector('#name').value.trim().split(' ')[0] || 'friend';
+
+  button.disabled = true;
+  button.textContent = 'Sending…';
+
+  try {
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: {
+        Accept: 'application/json'
+      }
+    });
+
+    if (response.ok) {
+      note.textContent = `Thanks, ${name}. We’ll be in touch soon.`;
+      note.style.fontWeight = '700';
+      button.textContent = 'Message sent ✓';
+      form.reset();
+    } else {
+      throw new Error('Submission failed');
+    }
+  } catch (error) {
+    note.textContent = 'Something went wrong. Please try again.';
+    button.disabled = false;
+    button.textContent = 'I’m ready to start ↗';
+  }
 });
