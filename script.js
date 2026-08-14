@@ -16,59 +16,40 @@ document.querySelectorAll('.play-button').forEach((button) => button.addEventLis
 }));
 document.querySelector('.close-modal')?.addEventListener('click', closeModal);
 modal?.addEventListener('click', (event) => { if (event.target === modal) closeModal(); });
-document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && !modal.hidden) closeModal(); });
+document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && modal && !modal.hidden) closeModal(); });
 
-const form = document.querySelector('#visit-form');
-
-form?.addEventListener('submit', async (event) => {
+document.querySelector('#visit-form')?.addEventListener('submit', (event) => {
   event.preventDefault();
-
-  const button = form.querySelector('button');
-  const note = document.querySelector('#form-note');
   const name = document.querySelector('#name').value.trim().split(' ')[0] || 'friend';
-
-  button.disabled = true;
-  button.textContent = 'Sending…';
-
-  try {
-    const response = await fetch(form.action, {
-      method: 'POST',
-      body: new FormData(form),
-      headers: {
-        Accept: 'application/json'
-      }
-    });
-
-    if (response.ok) {
-      note.textContent = `Thanks, ${name}. We’ll be in touch soon.`;
-      note.style.fontWeight = '700';
-      button.textContent = 'Message sent ✓';
-      form.reset();
-    } else {
-      throw new Error('Submission failed');
-    }
-  } catch (error) {
-    note.textContent = 'Something went wrong. Please try again.';
-    button.disabled = false;
-    button.textContent = 'I’m ready to start ↗';
-  }
+  const note = document.querySelector('#form-note');
+  note.textContent = `Thanks, ${name}. We’ll be in touch soon.`;
+  note.style.fontWeight = '700';
+  event.target.querySelector('button').textContent = 'You’re on the list ✓';
 });
 
-button,
-input,
-textarea {
-  font: inherit;
-}
+document.querySelectorAll('.catalog-card').forEach((card) => {
+  const program = card.querySelector('h3')?.textContent.trim();
+  if (!program) return;
+  card.setAttribute('role', 'link');
+  card.setAttribute('tabindex', '0');
+  card.addEventListener('click', () => {
+    window.location.href = `coming-soon.html?program=${encodeURIComponent(program)}`;
+  });
+  card.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      window.location.href = `coming-soon.html?program=${encodeURIComponent(program)}`;
+    }
+  });
+});
 
-.visit textarea {
-  border: 0;
-  border-bottom: 1px solid var(--line);
-  padding: 11px 0;
-  margin-bottom: 22px;
-  outline: none;
-  resize: vertical;
-}
-
-.visit textarea:focus {
-  border-color: var(--blue-dark);
-}
+const params = new URLSearchParams(window.location.search);
+const selectedProgram = params.get('program') || 'Your program';
+const programName = document.querySelector('#program-name');
+const programNameInline = document.querySelector('#program-name-inline');
+const waitlistProgram = document.querySelector('#waitlist-program');
+const waitlistSubject = document.querySelector('#waitlist-subject');
+if (programName) programName.textContent = selectedProgram;
+if (programNameInline) programNameInline.textContent = selectedProgram;
+if (waitlistProgram) waitlistProgram.value = selectedProgram;
+if (waitlistSubject) waitlistSubject.value = `Firm Foundations waitlist request: ${selectedProgram}`;
