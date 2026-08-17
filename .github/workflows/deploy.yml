@@ -29,12 +29,13 @@ jobs:
         uses: actions/configure-pages@v5
 
       - name: Upload site
-  uses: actions/upload-pages-artifact@v3
-  with:
-    name: github-pages-${{ github.run_id }}
-    path: .
+        uses: actions/upload-pages-artifact@v3
+        with:
+          name: firm-foundations-pages
+          path: .
+
       - name: Publish to GitHub Pages
-  id: deployment
-  uses: actions/deploy-pages@v4
-  with:
-    artifact_name: github-pages-${{ github.run_id }}
+        id: deployment
+        uses: actions/deploy-pages@v4
+        with:
+          artifact_name: firm-foundations-pages
