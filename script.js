@@ -54,6 +54,27 @@ if (programNameInline) programNameInline.textContent = selectedProgram;
 if (waitlistProgram) waitlistProgram.value = selectedProgram;
 if (waitlistSubject) waitlistSubject.value = `Firm Foundations waitlist request: ${selectedProgram}`;
 
+document.querySelectorAll('.quiz-dropdown').forEach((dropdown) => {
+  const toggle = dropdown.querySelector('.quiz-dropdown-toggle');
+
+  toggle.addEventListener('click', () => {
+    document.querySelectorAll('.quiz-dropdown.open').forEach((otherDropdown) => {
+      if (otherDropdown !== dropdown) {
+        otherDropdown.classList.remove('open');
+      }
+    });
+
+    dropdown.classList.toggle('open');
+  });
+});
+
+document.addEventListener('click', (event) => {
+  if (!event.target.closest('.quiz-dropdown')) {
+    document.querySelectorAll('.quiz-dropdown.open').forEach((dropdown) => {
+      dropdown.classList.remove('open');
+    });
+  }
+});
 
 document.querySelector('#program-quiz')?.addEventListener('submit', (event) => {
   event.preventDefault();
