@@ -53,3 +53,51 @@ if (programName) programName.textContent = selectedProgram;
 if (programNameInline) programNameInline.textContent = selectedProgram;
 if (waitlistProgram) waitlistProgram.value = selectedProgram;
 if (waitlistSubject) waitlistSubject.value = `Firm Foundations waitlist request: ${selectedProgram}`;
+
+
+document.querySelector('#program-quiz')?.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  const experience = document.querySelector('#experience').value;
+  const goal = document.querySelector('#goal').value;
+  const setting = document.querySelector('#setting').value;
+  const season = document.querySelector('#season').value;
+
+  let recommendation = 'Foundations';
+
+  if (experience === 'beginner') {
+    recommendation = 'Foundations';
+  } else if (experience === 'gym-new') {
+    recommendation = 'First-Timers';
+  } else if (season === '40plus') {
+    recommendation = 'Foundations 40+';
+  } else if (season === 'desk') {
+    recommendation = 'Desk to Strong';
+  } else if (setting === 'garage') {
+    recommendation = 'Garage Athlete';
+  } else if (goal === 'running') {
+    recommendation = 'Run Strong';
+  } else if (goal === 'mobility') {
+    recommendation = 'Mobility Foundation';
+  } else if (goal === 'performance') {
+    recommendation = 'Athlete';
+  } else if (season === 'busy') {
+    recommendation = 'Parents/Busy People';
+  } else if (setting === 'commercial' && experience === 'experienced') {
+    recommendation = 'The Hybrid Foundation';
+  }
+
+  const result = document.querySelector('#program-result');
+  const programLink = `coming-soon.html?program=${encodeURIComponent(recommendation)}`;
+
+  result.innerHTML = `
+    <strong>We recommend ${recommendation}.</strong>
+    <p>This program appears to be the best fit based on your answers.</p>
+    <a class="button button-blue" href="${programLink}">
+      View this program <span>↗</span>
+    </a>
+  `;
+
+  result.hidden = false;
+  result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+});
