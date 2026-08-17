@@ -36,34 +36,20 @@
     <option value="advanced">I’ve been training for a while and have substantial experience</option>
   </select>
 
-  <fieldset class="quiz-multiple">
-    <legend>What are your primary goals? Select all that apply.</legend>
+  <div class="quiz-dropdown" data-group="goal">
+  <button type="button" class="quiz-dropdown-toggle">
+    <span>What are your primary goals?</span>
+    <span class="quiz-chevron">⌄</span>
+  </button>
 
-    <label>
-      <input type="checkbox" name="goal" value="general">
-      Build overall strength and fitness
-    </label>
-
-    <label>
-      <input type="checkbox" name="goal" value="performance">
-      Improve athletic performance
-    </label>
-
-    <label>
-      <input type="checkbox" name="goal" value="running">
-      Become a stronger runner or train for a race
-    </label>
-
-    <label>
-      <input type="checkbox" name="goal" value="mobility">
-      Improve mobility and movement
-    </label>
-
-    <label>
-      <input type="checkbox" name="goal" value="hybrid">
-      Mix strength and running/cardio
-    </label>
-  </fieldset>
+  <div class="quiz-dropdown-menu">
+    <label><input type="checkbox" name="goal" value="general"><span>Build overall strength and fitness</span></label>
+    <label><input type="checkbox" name="goal" value="performance"><span>Improve athletic performance</span></label>
+    <label><input type="checkbox" name="goal" value="running"><span>Become a stronger runner or train for a race</span></label>
+    <label><input type="checkbox" name="goal" value="mobility"><span>Improve mobility and movement</span></label>
+    <label><input type="checkbox" name="goal" value="hybrid"><span>Mix strength and running/cardio</span></label>
+  </div>
+</div>
 
   <label for="setting">Where will you train most often?</label>
   <select id="setting" name="setting" required>
@@ -73,59 +59,25 @@
     <option value="garage">In a garage or home gym</option>
   </select>
 
-  <fieldset class="quiz-multiple">
-    <legend>Which statements describe your current situation? Select all that apply.</legend>
+ <div class="quiz-dropdown" data-group="season">
+  <button type="button" class="quiz-dropdown-toggle">
+    <span>Which statements describe your current situation?</span>
+    <span class="quiz-chevron">⌄</span>
+  </button>
 
-    <label>
-      <input type="checkbox" name="season" value="beginner">
-      I’ve never exercised regularly or have no knowledge of how to exercise
-    </label>
-
-    <label>
-      <input type="checkbox" name="season" value="busy">
-      I have limited time and need quick workouts
-    </label>
-
-    <label>
-      <input type="checkbox" name="season" value="desk">
-      I spend most of my day sitting at a desk
-    </label>
-
-    <label>
-      <input type="checkbox" name="season" value="joint">
-      I’m experiencing some aches and pains in my joints
-    </label>
-
-    <label>
-      <input type="checkbox" name="season" value="55plus">
-      I’m 55 years or older
-    </label>
-
-    <label>
-      <input type="checkbox" name="season" value="athlete">
-      I’m an athlete and want to become stronger, faster, and more explosive
-    </label>
-
-    <label>
-      <input type="checkbox" name="season" value="mobility">
-      I want more functional mobility for everyday life
-    </label>
-
-    <label>
-      <input type="checkbox" name="season" value="returning">
-      I’ve worked out before, but I’m just getting back into the gym
-    </label>
-
-    <label>
-      <input type="checkbox" name="season" value="running">
-      I want to get better at running or I’m training for a race
-    </label>
-
-    <label>
-      <input type="checkbox" name="season" value="hybrid">
-      I want a mix of strength and running/cardio
-    </label>
-  </fieldset>
+  <div class="quiz-dropdown-menu">
+    <label><input type="checkbox" name="season" value="beginner"><span>I’ve never exercised regularly or have no knowledge of how to exercise</span></label>
+    <label><input type="checkbox" name="season" value="busy"><span>I have limited time and need quick workouts</span></label>
+    <label><input type="checkbox" name="season" value="desk"><span>I spend most of my day sitting at a desk</span></label>
+    <label><input type="checkbox" name="season" value="joint"><span>I’m experiencing some aches and pains in my joints</span></label>
+    <label><input type="checkbox" name="season" value="55plus"><span>I’m 55 years or older</span></label>
+    <label><input type="checkbox" name="season" value="athlete"><span>I’m an athlete and want to become stronger, faster, and more explosive</span></label>
+    <label><input type="checkbox" name="season" value="mobility"><span>I want more functional mobility for everyday life</span></label>
+    <label><input type="checkbox" name="season" value="returning"><span>I’ve worked out before, but I’m just getting back into the gym</span></label>
+    <label><input type="checkbox" name="season" value="running"><span>I want to get better at running or I’m training for a race</span></label>
+    <label><input type="checkbox" name="season" value="hybrid"><span>I want a mix of strength and running/cardio</span></label>
+  </div>
+</div>
 
   <button class="button button-dark" type="submit">
     Find my program <span>↗</span>
