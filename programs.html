@@ -17,7 +17,57 @@
 
     <section class="how-it-works section" id="how-it-works"><div class="catalog-heading"><div><p class="kicker"><span>01</span> Before you choose</p><h2>How online<br>programs <em>work.</em></h2></div><p>Each program gives you structure without requiring a gym membership, a personal coach, or a perfect schedule.</p></div><div class="how-grid"><article><span>01</span><h3>Choose your plan</h3><p>Find the program that best matches your current experience, goals, equipment, and season of life.</p></article><article><span>02</span><h3>Follow the calendar</h3><p>Use the workouts, progressions, and guidance in your plan to build a steady rhythm week by week.</p></article><article><span>03</span><h3>Scale as needed</h3><p>Adjust reps, load, range of motion, or movement variations to meet your current ability and available equipment.</p></article><article><span>04</span><h3>Keep showing up</h3><p>The goal is faithful consistency—not perfection. Train your body while remembering that your identity is not your performance.</p></article></div></section>
 
-    <section class="choose-section section"><div><p class="kicker"><span>02</span> Find your starting point</p><h2>Which plan is<br>right for <em>you?</em></h2></div><div class="choose-list"><div><b>New to structured training?</b><p>Start with <strong>Foundations</strong>. If you are new to a commercial gym, move into <strong>First-Timers</strong> when you are ready.</p></div><div><b>Short on time or training around family?</b><p>Look at <strong>Parents/Busy People</strong> or <strong>Desk to Strong</strong>.</p></div><div><b>Training for a specific performance goal?</b><p>Choose <strong>Athlete</strong>, <strong>Run Strong</strong>, <strong>Garage Athlete</strong>, or <strong>The Hybrid Foundation</strong>.</p></div><div><b>Need to build your base or move better?</b><p>Start with <strong>Foundations 40+</strong> or <strong>Mobility Foundation</strong>.</p></div></div></section>
+    <section class="choose-section section" id="program-finder">
+  <div>
+    <p class="kicker"><span>02</span> Find your starting point</p>
+    <h2>Which program is<br>right for <em>you?</em></h2>
+    <p class="quiz-intro">
+      Answer a few questions and we’ll point you toward the program that best fits your current goals, experience, and season of life.
+    </p>
+  </div>
+
+  <form id="program-quiz" class="program-quiz">
+    <label for="experience">What best describes your training experience?</label>
+    <select id="experience" name="experience" required>
+      <option value="">Choose one</option>
+      <option value="beginner">I’m new to structured training</option>
+      <option value="gym-new">I’m new to training in a commercial gym</option>
+      <option value="experienced">I have some training experience</option>
+    </select>
+
+    <label for="goal">What is your primary goal?</label>
+    <select id="goal" name="goal" required>
+      <option value="">Choose one</option>
+      <option value="general">Build overall strength and fitness</option>
+      <option value="performance">Improve athletic performance</option>
+      <option value="running">Become a stronger runner</option>
+      <option value="mobility">Improve mobility and movement</option>
+    </select>
+
+    <label for="setting">Where will you train most often?</label>
+    <select id="setting" name="setting" required>
+      <option value="">Choose one</option>
+      <option value="home">At home with little equipment</option>
+      <option value="commercial">At a commercial gym</option>
+      <option value="garage">In a garage or home gym</option>
+    </select>
+
+    <label for="season">Which best describes your current season?</label>
+    <select id="season" name="season" required>
+      <option value="">Choose one</option>
+      <option value="busy">I have very limited time</option>
+      <option value="desk">I spend much of my day sitting at a desk</option>
+      <option value="40plus">I’m 40 or older</option>
+      <option value="flexible">I have a fairly flexible schedule</option>
+    </select>
+
+    <button class="button button-dark" type="submit">
+      Find my program <span>↗</span>
+    </button>
+
+    <div id="program-result" class="program-result" hidden></div>
+  </form>
+</section>
 
     <section class="catalog-section catalog-soft section"><div class="catalog-heading"><div><p class="kicker"><span>03</span> Ready-to-follow plans</p><h2>Build from<br><em>where you are.</em></h2></div><p>Every plan is designed to be practical, scalable, and connected to the whole-person mission of Firm Foundations.</p></div><div class="catalog-grid catalog-grid-ten">
       <article class="catalog-card catalog-featured"><div class="catalog-card-top"><span>01 · Beginner</span><b>12 weeks</b></div><h3>Foundations</h3><p>A 12-week beginner plan for building consistency, confidence, and a healthy rhythm from the ground up.</p><ul><li>Beginner-friendly progressions</li><li>Minimal-equipment options</li><li>Clear weekly structure</li></ul><a href="index.html#visit">Ask about Foundations ↗</a></article>
