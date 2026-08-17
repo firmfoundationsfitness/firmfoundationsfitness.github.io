@@ -59,33 +59,132 @@ document.querySelector('#program-quiz')?.addEventListener('submit', (event) => {
   event.preventDefault();
 
   const experience = document.querySelector('#experience').value;
-  const goal = document.querySelector('#goal').value;
+  const goals = [...document.querySelectorAll('input[name="goal"]:checked')]
+    .map((input) => input.value);
   const setting = document.querySelector('#setting').value;
-  const season = document.querySelector('#season').value;
+  const seasons = [...document.querySelectorAll('input[name="season"]:checked')]
+    .map((input) => input.value);
 
-  let recommendation = 'Foundations';
+  const scores = {
+    'Foundations': 0,
+    'First-Timers': 0,
+    'Foundations 40+': 0,
+    'Desk to Strong': 0,
+    'Parents/Busy People': 0,
+    'Athlete': 0,
+    'Run Strong': 0,
+    'Mobility Foundation': 0,
+    'The Hybrid Foundation': 0,
+    'Garage Athlete': 0
+  };
 
+  // Experience
   if (experience === 'beginner') {
-    recommendation = 'Foundations';
-  } else if (experience === 'gym-new') {
-    recommendation = 'First-Timers';
-  } else if (season === '40plus') {
-    recommendation = 'Foundations 40+';
-  } else if (season === 'desk') {
-    recommendation = 'Desk to Strong';
-  } else if (setting === 'garage') {
-    recommendation = 'Garage Athlete';
-  } else if (goal === 'running') {
-    recommendation = 'Run Strong';
-  } else if (goal === 'mobility') {
-    recommendation = 'Mobility Foundation';
-  } else if (goal === 'performance') {
-    recommendation = 'Athlete';
-  } else if (season === 'busy') {
-    recommendation = 'Parents/Busy People';
-  } else if (setting === 'commercial' && experience === 'experienced') {
-    recommendation = 'The Hybrid Foundation';
+    scores['Foundations'] += 6;
   }
+
+  if (experience === 'gym-new') {
+    scores['First-Timers'] += 6;
+  }
+
+  if (experience === 'experienced') {
+    scores['The Hybrid Foundation'] += 2;
+    scores['Athlete'] += 2;
+  }
+
+  if (experience === 'advanced') {
+    scores['Athlete'] += 4;
+    scores['The Hybrid Foundation'] += 3;
+  }
+
+  // Training location
+  if (setting === 'home') {
+    scores['Foundations'] += 2;
+    scores['Parents/Busy People'] += 2;
+    scores['Desk to Strong'] += 1;
+  }
+
+  if (setting === 'commercial') {
+    scores['First-Timers'] += 2;
+    scores['Athlete'] += 2;
+    scores['The Hybrid Foundation'] += 2;
+  }
+
+  if (setting === 'garage') {
+    scores['Garage Athlete'] += 6;
+  }
+
+  // Goals
+  goals.forEach((goal) => {
+    if (goal === 'general') {
+      scores['Foundations'] += 3;
+      scores['The Hybrid Foundation'] += 2;
+    }
+
+    if (goal === 'performance') {
+      scores['Athlete'] += 6;
+    }
+
+    if (goal === 'running') {
+      scores['Run Strong'] += 6;
+    }
+
+    if (goal === 'mobility') {
+      scores['Mobility Foundation'] += 6;
+    }
+
+    if (goal === 'hybrid') {
+      scores['The Hybrid Foundation'] += 6;
+    }
+  });
+
+  // Current situation and season of life
+  seasons.forEach((season) => {
+    if (season === 'beginner') {
+      scores['Foundations'] += 7;
+    }
+
+    if (season === 'busy') {
+      scores['Parents/Busy People'] += 6;
+    }
+
+    if (season === 'desk') {
+      scores['Desk to Strong'] += 6;
+    }
+
+    if (season === 'joint') {
+      scores['Foundations 40+'] += 4;
+      scores['Mobility Foundation'] += 4;
+    }
+
+    if (season === '55plus') {
+      scores['Foundations 40+'] += 8;
+    }
+
+    if (season === 'athlete') {
+      scores['Athlete'] += 8;
+    }
+
+    if (season === 'mobility') {
+      scores['Mobility Foundation'] += 6;
+    }
+
+    if (season === 'returning') {
+      scores['First-Timers'] += 5;
+      scores['Foundations'] += 2;
+    }
+
+    if (season === 'running') {
+      scores['Run Strong'] += 7;
+    }
+
+    if (season === 'hybrid') {
+      scores['The Hybrid Foundation'] += 7;
+    }
+  });
+
+  const recommendation = Object.entries(scores)
+    .sort((a, b) => b[1] - a[1])[0][0];
 
   const result = document.querySelector('#program-result');
   const programLink = `coming-soon.html?program=${encodeURIComponent(recommendation)}`;
@@ -99,5 +198,8 @@ document.querySelector('#program-quiz')?.addEventListener('submit', (event) => {
   `;
 
   result.hidden = false;
-  result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  result.scrollIntoView({
+    behavior: 'smooth',
+    block: 'nearest'
+  });
 });
