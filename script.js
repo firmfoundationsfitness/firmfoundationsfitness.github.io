@@ -85,14 +85,26 @@ const quizSubmit = document.querySelector('#quiz-submit');
 let currentQuizStep = 0;
 
 function showQuizStep(stepNumber) {
+  if (stepNumber < 0 || stepNumber >= quizSteps.length) {
+    return;
+  }
+
   quizSteps.forEach((step, index) => {
     step.style.display = index === stepNumber ? 'block' : 'none';
   });
 
   quizCurrent.textContent = stepNumber + 1;
-  quizBack.hidden = stepNumber === 0;
-  quizNext.hidden = stepNumber === quizSteps.length - 1;
-  quizSubmit.hidden = stepNumber !== quizSteps.length - 1;
+
+  const isFirstQuestion = stepNumber === 0;
+  const isLastQuestion = stepNumber === quizSteps.length - 1;
+
+  quizBack.hidden = isFirstQuestion;
+  quizNext.hidden = isLastQuestion;
+  quizSubmit.hidden = !isLastQuestion;
+
+  quizBack.style.display = isFirstQuestion ? 'none' : 'inline-flex';
+  quizNext.style.display = isLastQuestion ? 'none' : 'inline-flex';
+  quizSubmit.style.display = isLastQuestion ? 'inline-flex' : 'none';
 }
 
 function quizStepIsComplete(stepNumber) {
@@ -127,8 +139,10 @@ quizNext?.addEventListener('click', () => {
     return;
   }
 
+  if (currentQuizStep < quizSteps.length - 1) {
   currentQuizStep += 1;
   showQuizStep(currentQuizStep);
+}
 });
 
 quizBack?.addEventListener('click', () => {
