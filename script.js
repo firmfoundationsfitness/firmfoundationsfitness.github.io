@@ -75,6 +75,70 @@ document.addEventListener('click', (event) => {
     });
   }
 });
+const quizForm = document.querySelector('#program-quiz');
+const quizSteps = [...document.querySelectorAll('.quiz-step')];
+const quizCurrent = document.querySelector('#quiz-current');
+const quizNext = document.querySelector('#quiz-next');
+const quizBack = document.querySelector('#quiz-back');
+const quizSubmit = document.querySelector('#quiz-submit');
+
+let currentQuizStep = 0;
+
+function showQuizStep(stepNumber) {
+  quizSteps.forEach((step, index) => {
+    step.style.display = index === stepNumber ? 'block' : 'none';
+  });
+
+  quizCurrent.textContent = stepNumber + 1;
+  quizBack.hidden = stepNumber === 0;
+  quizNext.hidden = stepNumber === quizSteps.length - 1;
+  quizSubmit.hidden = stepNumber !== quizSteps.length - 1;
+}
+
+function quizStepIsComplete(stepNumber) {
+  const currentStepElement = quizSteps[stepNumber];
+  const select = currentStepElement.querySelector('select');
+
+  if (select && !select.value) {
+    alert('Please choose an answer before continuing.');
+    return false;
+  }
+
+  const checkboxes = currentStepElement.querySelectorAll(
+    'input[type="checkbox"]'
+  );
+
+  if (checkboxes.length > 0) {
+    const checked = currentStepElement.querySelectorAll(
+      'input[type="checkbox"]:checked'
+    );
+
+    if (checked.length === 0) {
+      alert('Please select at least one answer before continuing.');
+      return false;
+    }
+  }
+
+  return true;
+}
+
+quizNext?.addEventListener('click', () => {
+  if (!quizStepIsComplete(currentQuizStep)) {
+    return;
+  }
+
+  currentQuizStep += 1;
+  showQuizStep(currentQuizStep);
+});
+
+quizBack?.addEventListener('click', () => {
+  currentQuizStep -= 1;
+  showQuizStep(currentQuizStep);
+});
+
+if (quizForm && quizSteps.length > 0) {
+  showQuizStep(0);
+}
 
 document.querySelector('#program-quiz')?.addEventListener('submit', (event) => {
   event.preventDefault();
