@@ -190,4 +190,10 @@ body{background:#0f141a;color:#fff}.site-header{background:#111315;border-color:
   }
 }
 
+#program-quiz .quiz-step {
+  display: none !important;
+}
 
+#program-quiz .quiz-step.active {
+  display: block !important;
+}
