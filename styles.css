@@ -577,3 +577,330 @@ body{background:#0f141a;color:#fff}.site-header{background:#111315;border-color:
     margin-top: 26px;
   }
 }
+
+
+/* Final phone optimization */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden !important;
+}
+
+img,
+video,
+iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3,
+p,
+a,
+li,
+button,
+label,
+span {
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 700px) {
+  body {
+    width: 100%;
+    min-width: 0;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  main,
+  section,
+  header,
+  footer,
+  form,
+  div {
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .topline {
+    width: 100%;
+    height: 25px;
+    padding: 0 4vw;
+    font-size: 7px;
+    letter-spacing: 0.04em;
+  }
+
+  .site-header {
+    width: 100%;
+    height: 70px;
+    padding: 0 5vw;
+  }
+
+  .logo-link {
+    width: 88px;
+    height: 60px;
+  }
+
+  .main-nav {
+    top: 69px;
+    width: 100%;
+    max-width: 100%;
+    padding: 22px 7vw 25px;
+  }
+
+  .main-nav a {
+    width: 100%;
+    font-size: 15px;
+  }
+
+  .section,
+  .programs-catalog-hero,
+  .program-page-hero,
+  .coming-hero,
+  .page-callout,
+  .free-cta {
+    width: 100%;
+    max-width: 100%;
+    padding: 56px 7vw;
+  }
+
+  h1,
+  .programs-catalog-hero h1,
+  .program-page-hero h1,
+  .coming-hero h1 {
+    max-width: 100%;
+    font-size: clamp(42px, 12vw, 64px) !important;
+    line-height: 0.95;
+    letter-spacing: -0.07em;
+  }
+
+  h2,
+  .mission h2,
+  .programs h2,
+  .message-section h2,
+  .mentorship h2,
+  .visit h2,
+  .choose-section h2,
+  .catalog-heading h2,
+  .package-intro h2,
+  .waitlist-section h2 {
+    max-width: 100%;
+    font-size: clamp(34px, 10vw, 52px) !important;
+    line-height: 0.98;
+    letter-spacing: -0.07em;
+  }
+
+  h3 {
+    font-size: clamp(22px, 7vw, 32px) !important;
+    line-height: 1;
+  }
+
+  p,
+  li,
+  label,
+  .hero-text,
+  .section-lede,
+  .catalog-heading > p,
+  .programs-head > p,
+  .message-head > p:last-child {
+    max-width: 100%;
+    font-size: 15px !important;
+    line-height: 1.5;
+  }
+
+  .kicker,
+  .breadcrumb,
+  .tag,
+  .underlink,
+  .catalog-card-top,
+  .package-number {
+    font-size: 10px !important;
+    line-height: 1.35;
+  }
+
+  .hero,
+  .mission,
+  .mentorship,
+  .visit-inner,
+  .waitlist-section,
+  .coming-hero,
+  .coming-note,
+  .what-section,
+  .sample-section,
+  .results-section,
+  .reset-hero-grid,
+  .reset-details,
+  .catalog-steps {
+    display: block !important;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero > *,
+  .mission > *,
+  .mentorship > *,
+  .visit-inner > *,
+  .coming-hero > *,
+  .what-section > *,
+  .sample-section > *,
+  .results-section > * {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .hero-panel,
+  .coming-panel,
+  .message-art {
+    width: 100%;
+    max-width: 100%;
+    min-height: 250px;
+    height: auto;
+  }
+
+  .hero-actions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+  }
+
+  .button,
+  .hero-actions .button,
+  .page-callout .button,
+  .free-cta .button,
+  form .button {
+    width: 100%;
+    max-width: 100%;
+    min-height: 48px;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .program-grid,
+  .catalog-grid,
+  .catalog-grid-ten,
+  .package-grid,
+  .home-program-grid,
+  .how-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    width: 100%;
+    max-width: 100%;
+    gap: 14px;
+  }
+
+  .program-grid article,
+  .catalog-card,
+  .package-card,
+  .home-program-card,
+  .how-grid article {
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+    padding: 23px 20px;
+  }
+
+  .choose-section {
+    display: block !important;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .choose-list {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 35px;
+  }
+
+  .program-quiz {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    padding: 22px 17px !important;
+    overflow: visible;
+  }
+
+  .quiz-step,
+  .quiz-dropdown,
+  .quiz-dropdown-toggle {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .quiz-dropdown-toggle {
+    min-height: 58px;
+    padding: 14px;
+    font-size: 14px;
+  }
+
+  .quiz-dropdown-menu {
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 100%;
+    max-height: 55vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .quiz-dropdown-menu label {
+    width: 100%;
+    font-size: 14px !important;
+  }
+
+  .quiz-navigation {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .quiz-navigation button {
+    width: 100%;
+    margin: 0;
+  }
+
+  input,
+  select,
+  textarea {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    font-size: 16px !important;
+  }
+
+  .message-card,
+  .disclaimer-box {
+    display: block !important;
+    width: 100%;
+    max-width: 100%;
+    padding: 25px 20px;
+  }
+
+  footer,
+  .subpage-footer {
+    width: 100%;
+    max-width: 100%;
+    padding: 38px 7vw 24px;
+  }
+
+  footer > div,
+  .subpage-footer > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+}
