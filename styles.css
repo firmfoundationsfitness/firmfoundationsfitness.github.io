@@ -193,3 +193,7 @@ body{background:#0f141a;color:#fff}.site-header{background:#111315;border-color:
 .choose-section {
   background-color: #8bb7e8;
 }
+
+section.choose-section.section {
+  background: #8bb7e8 !important;
+}
