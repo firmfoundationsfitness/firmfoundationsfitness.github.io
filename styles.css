@@ -904,3 +904,198 @@ span {
     gap: 15px;
   }
 }
+
+.program-options-section {
+  background: #f5f8fb;
+}
+
+.program-options-heading {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 11vw;
+  align-items: end;
+  margin-bottom: 48px;
+}
+
+.program-options-heading .kicker {
+  grid-column: 1 / -1;
+  margin-bottom: -28px;
+}
+
+.program-options-heading h2 {
+  margin: 0;
+  font-size: clamp(42px, 5vw, 68px);
+  line-height: 0.95;
+  letter-spacing: -0.09em;
+}
+
+.program-options-heading > p:last-child {
+  max-width: 390px;
+  margin: 0;
+  color: #718090;
+  font-size: 14px;
+}
+
+.program-options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  align-items: stretch;
+}
+
+.program-option-card {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 27px;
+  border: 1px solid #dce3eb;
+  background: #fff;
+  color: #111315;
+}
+
+.program-option-card.sample-option {
+  background: #8bb7e8;
+  border-color: #8bb7e8;
+}
+
+.program-option-card.full-option {
+  background: #111315;
+  color: #fff;
+  border-color: #111315;
+}
+
+.program-option-label {
+  font: 700 10px var(--mono);
+  letter-spacing: 0.12em;
+  color: #426a98;
+}
+
+.full-option .program-option-label {
+  color: #8bb7e8;
+}
+
+.program-option-card h3 {
+  margin: 38px 0 12px;
+  font-size: 34px;
+  line-height: 1;
+  letter-spacing: -0.07em;
+}
+
+.program-option-card h3 em {
+  color: #8bb7e8;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.program-option-card p {
+  max-width: 390px;
+  font-size: 14px;
+  color: #3c5a78;
+}
+
+.full-option p {
+  color: #d4dee7;
+}
+
+.program-option-card ul {
+  margin: 20px 0 28px;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid rgba(17, 19, 21, 0.2);
+}
+
+.full-option ul {
+  border-color: #3a4148;
+}
+
+.program-option-card li {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(17, 19, 21, 0.2);
+  font: 11px var(--mono);
+  color: #304d6d;
+}
+
+.full-option li {
+  border-color: #3a4148;
+  color: #d4dee7;
+}
+
+.program-option-card .button {
+  align-self: flex-start;
+  margin-top: auto;
+}
+
+.sample-option .button {
+  background: #111315;
+  color: #fff;
+}
+
+.program-coming-soon {
+  display: inline-block;
+  align-self: flex-start;
+  margin-top: auto;
+  padding: 11px 14px;
+  background: #8bb7e8;
+  color: #111315;
+  font: 700 10px var(--mono);
+  letter-spacing: 0.1em;
+}
+
+.program-waitlist-intro {
+  margin-top: 22px;
+}
+
+.program-option-card .waitlist-form {
+  margin-top: 8px;
+}
+
+.program-option-card .waitlist-form input,
+.program-option-card .waitlist-form textarea {
+  color: #fff;
+  border-color: #3a4148;
+  background: transparent;
+}
+
+.program-option-card .waitlist-form label {
+  color: #aebdca;
+}
+
+.program-option-card .waitlist-form label span {
+  color: #718090;
+}
+
+.program-option-card .waitlist-form small {
+  color: #aebdca;
+}
+
+@media (max-width: 800px) {
+  .program-options-heading {
+    display: block;
+    margin-bottom: 35px;
+  }
+
+  .program-options-heading .kicker {
+    margin-bottom: 25px;
+  }
+
+  .program-options-heading > p:last-child {
+    margin-top: 25px;
+  }
+
+  .program-options-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .program-option-card {
+    padding: 25px 21px;
+  }
+
+  .program-option-card h3 {
+    font-size: 30px;
+  }
+
+  .program-option-card .button,
+  .program-option-card .waitlist-form .button {
+    width: 100%;
+    justify-content: center;
+  }
+}
