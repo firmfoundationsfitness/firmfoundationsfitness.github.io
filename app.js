@@ -167,56 +167,64 @@ const programs = [
 
 const questions = [
   {
-    title: "What best describes you right now?",
-    help: "Choose the starting point that feels most honest.",
+    title: "Where are you starting from?",
+    help: "Choose the answer that best describes your current fitness rhythm.",
     mode: "single",
     key: "experience",
     options: [
-      { label: "I am brand new", value: "first-time", detail: "I want something simple and unintimidating." },
-      { label: "I am getting back into it", value: "getting-back", detail: "I have trained before, but need structure again." },
-      { label: "I train some already", value: "intermediate", detail: "I can handle progression and some intensity." },
-      { label: "I am an athlete or experienced lifter", value: "experienced", detail: "I want performance, strength, or conditioning." }
+      { label: "Brand new", value: "first-time", detail: "I need simple, clear guidance from the beginning." },
+      { label: "Getting back into it", value: "getting-back", detail: "I have trained before, but I need to rebuild consistency." },
+      { label: "Consistent but need structure", value: "intermediate", detail: "I work out, but I want a better plan." },
+      { label: "Experienced athlete/lifter", value: "experienced", detail: "I want performance, strength, or conditioning." }
     ]
   },
   {
-    title: "What equipment can you use?",
-    help: "Select every option that applies.",
+    title: "What is your main goal right now?",
+    help: "Pick the one that matters most. You can compare others later.",
+    mode: "single",
+    key: "primaryGoal",
+    options: [
+      { label: "Build consistency", value: "consistency", detail: "I want something realistic I can stick with." },
+      { label: "Get stronger", value: "strength", detail: "I want measurable strength progress." },
+      { label: "Improve athletic performance", value: "power", detail: "I want explosiveness, speed, and rotation." },
+      { label: "Move and feel better", value: "mobility", detail: "I want mobility, control, and joint-friendly training." },
+      { label: "Support running/cardio", value: "running", detail: "I want strength that supports endurance." }
+    ]
+  },
+  {
+    title: "What equipment do you have?",
+    help: "Choose every option you can regularly use.",
     mode: "multi",
     key: "equipment",
     options: [
       { label: "No equipment", value: "home", detail: "Bodyweight only." },
-      { label: "Dumbbells or bands", value: "minimal", detail: "A small home setup." },
-      { label: "Garage gym", value: "garage", detail: "Barbell, rack, kettlebells, or similar." },
-      { label: "Commercial gym", value: "commercial", detail: "Full gym access." },
-      { label: "Running or outdoor space", value: "running", detail: "Roads, track, hills, or open space." }
+      { label: "A few basics", value: "minimal", detail: "Dumbbells, bands, kettlebell, or similar." },
+      { label: "Garage gym", value: "garage", detail: "Some weights or larger equipment at home." },
+      { label: "Commercial gym", value: "commercial", detail: "Full gym access." }
     ]
   },
   {
-    title: "How much time can you usually give?",
-    help: "Pick the range you could realistically repeat.",
+    title: "How much time do you realistically have?",
+    help: "Choose what you could repeat most weeks.",
     mode: "single",
     key: "time",
     options: [
-      { label: "15-25 minutes", value: "short", detail: "Keep the barrier low." },
-      { label: "25-40 minutes", value: "moderate", detail: "Enough for focused training." },
-      { label: "40-60 minutes", value: "long", detail: "Room for warmups, strength, and conditioning." }
+      { label: "15-25 minutes", value: "short", detail: "Short and sustainable." },
+      { label: "25-40 minutes", value: "moderate", detail: "A balanced training window." },
+      { label: "40-60 minutes", value: "long", detail: "More complete training sessions." }
     ]
   },
   {
-    title: "What do you want the program to solve first?",
-    help: "Select every goal that matters.",
+    title: "Anything important to account for?",
+    help: "Choose every answer that applies.",
     mode: "multi",
-    key: "goals",
+    key: "considerations",
     options: [
-      { label: "Build consistency", value: "consistency", detail: "I need a plan I will actually follow." },
-      { label: "Start from zero", value: "first-time", detail: "I need a true beginner route." },
-      { label: "Get stronger", value: "strength", detail: "I want measurable progress." },
-      { label: "Become more explosive", value: "power", detail: "I want athletic performance." },
-      { label: "Move better", value: "mobility", detail: "I need mobility and control." },
-      { label: "Train around a desk job", value: "desk-job", detail: "I sit a lot and feel stiff." },
-      { label: "Protect joints", value: "joint-friendly", detail: "I want smart, sustainable pacing." },
-      { label: "Support running", value: "running", detail: "I want strength that helps my miles." },
-      { label: "Mix strength and cardio", value: "hybrid", detail: "I want both lifting and conditioning." }
+      { label: "Desk job/stiffness", value: "desk-job", detail: "I sit a lot and need to move better." },
+      { label: "Joint aches", value: "joint-friendly", detail: "I want smart, sustainable training." },
+      { label: "Busy schedule", value: "busy", detail: "I need something efficient." },
+      { label: "Training for sport", value: "sport", detail: "I want athletic carryover." },
+      { label: "No major considerations", value: "none", detail: "Just give me the best fit." }
     ]
   }
 ];
@@ -383,7 +391,7 @@ function renderQuestion() {
   const question = questions[state.questionIndex];
   const currentAnswer = state.answers[question.key] || (question.mode === "multi" ? [] : "");
 
-  questionProgress.textContent = `Question ${state.questionIndex + 1}/4`;
+  questionProgress.textContent = `Question ${state.questionIndex + 1}/${questions.length}`;
   progressFill.style.width = `${((state.questionIndex + 1) / questions.length) * 100}%`;
   questionTitle.textContent = question.title;
   questionHelp.textContent = question.help;
@@ -437,60 +445,94 @@ function scoreProgram(program) {
   let score = 0;
   const reasons = [];
   const experience = state.answers.experience;
+  const primaryGoal = state.answers.primaryGoal;
   const equipment = state.answers.equipment || [];
   const time = state.answers.time;
-  const goals = state.answers.goals || [];
+  const considerations = state.answers.considerations || [];
 
-  const beginnerLevels = ["Beginner", "Intermediate"];
-  if (experience === "first-time" && program.goals.includes("first-time")) {
-    score += 4;
-    reasons.push("It gives you a true starting point.");
+  if (experience === "first-time") {
+    if (program.goals.includes("first-time")) {
+      score += 7;
+      reasons.push("It is built for a true starting point.");
+    }
+    if (program.level === "Beginner") {
+      score += 4;
+    }
   }
-  if (experience === "getting-back" && (program.goals.includes("getting-back") || beginnerLevels.includes(program.level))) {
-    score += 3;
-    reasons.push("It rebuilds rhythm without throwing you into the deep end.");
+
+  if (experience === "getting-back") {
+    if (program.goals.includes("getting-back") || program.goals.includes("consistency")) {
+      score += 5;
+      reasons.push("It helps rebuild rhythm without overcomplicating the process.");
+    }
+    if (["Beginner", "Intermediate"].includes(program.level)) {
+      score += 3;
+    }
   }
-  if (experience === "intermediate" && ["Intermediate", "Experienced"].includes(program.level)) {
-    score += 3;
-    reasons.push("The difficulty matches someone who has trained before.");
+
+  if (experience === "intermediate") {
+    if (["Intermediate", "Experienced"].includes(program.level)) {
+      score += 4;
+      reasons.push("The difficulty matches someone who already has some training rhythm.");
+    }
   }
-  if (experience === "experienced" && ["Experienced", "Athlete"].includes(program.level)) {
-    score += 4;
-    reasons.push("It has enough challenge to keep progression meaningful.");
+
+  if (experience === "experienced") {
+    if (["Experienced", "Athlete"].includes(program.level)) {
+      score += 5;
+      reasons.push("It has enough challenge to make progress feel meaningful.");
+    }
+  }
+
+  if (primaryGoal && program.goals.includes(primaryGoal)) {
+    score += 8;
+    reasons.push(`It directly supports your ${primaryGoal.replace("-", " ")} goal.`);
   }
 
   const equipmentMap = {
     home: ["None"],
     minimal: ["Minimal", "None"],
-    garage: ["Garage", "Minimal"],
-    commercial: ["Commercial", "Garage", "Minimal"],
-    running: ["Minimal", "None", "Commercial"]
+    garage: ["Garage", "Minimal", "None"],
+    commercial: ["Commercial", "Garage", "Minimal", "None"]
   };
+
   equipment.forEach((item) => {
     if (equipmentMap[item]?.includes(program.equipment)) {
-      score += 2;
+      score += 3;
     }
   });
 
   if (time === "short" && ["15-25 min", "15-30 min", "20-30 min"].includes(program.time)) {
-    score += 3;
+    score += 4;
     reasons.push("The sessions fit a tighter schedule.");
   }
+
   if (time === "moderate" && ["25-35 min", "30-40 min", "35-50 min"].includes(program.time)) {
-    score += 2;
-    reasons.push("The training blocks fit a realistic weekly rhythm.");
+    score += 3;
+    reasons.push("The training time fits a realistic weekly rhythm.");
   }
+
   if (time === "long" && ["40-55 min", "45-60 min", "35-50 min"].includes(program.time)) {
-    score += 2;
+    score += 3;
     reasons.push("It uses the extra time for fuller training sessions.");
   }
 
-  goals.forEach((goal) => {
-    if (program.goals.includes(goal)) {
-      score += 3;
-      reasons.push(`It directly supports your "${goal.replace("-", " ")}" goal.`);
+  considerations.forEach((item) => {
+    if (item !== "none" && program.goals.includes(item)) {
+      score += 5;
+      reasons.push(`It accounts for ${item.replace("-", " ")}.`);
     }
   });
+
+  if (considerations.includes("busy") && ["15-25 min", "15-30 min", "20-30 min", "25-35 min"].includes(program.time)) {
+    score += 4;
+    reasons.push("It should be easier to sustain in a busy season.");
+  }
+
+  if (considerations.includes("sport") && program.goals.includes("power")) {
+    score += 5;
+    reasons.push("It has stronger carryover for athletic performance.");
+  }
 
   if (program.featured) {
     score += 1;
