@@ -234,6 +234,12 @@ h3 {
   color: var(--ink);
 }
 
+.program-card .button.secondary {
+  background: #05080c;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
 .button.light {
   background: #fff;
   color: var(--ink);
