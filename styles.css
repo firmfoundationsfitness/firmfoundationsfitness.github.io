@@ -604,6 +604,22 @@ select {
   color: rgba(255, 255, 255, 0.74);
 }
 
+.compare-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 18px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--soft-blue);
+}
+
+.compare-bar[hidden] {
+  display: none;
+}
+
 .compare-shell {
   overflow: hidden;
 }
