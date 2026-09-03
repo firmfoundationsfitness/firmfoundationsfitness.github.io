@@ -248,6 +248,9 @@ const nextQuestion = document.querySelector("#next-question");
 const resetQuiz = document.querySelector("#reset-quiz");
 const recommendationPanel = document.querySelector("#recommendation-panel");
 const routeToast = document.querySelector("#route-toast");
+const compareBar = document.querySelector("#compare-bar");
+const compareCount = document.querySelector("#compare-count");
+const goCompare = document.querySelector("#go-compare");
 
 function getSearchBlob(program) {
   return [
@@ -316,7 +319,12 @@ function renderCompare() {
   const selectedPrograms = state.selectedCompare
     .map((id) => programs.find((program) => program.id === id))
     .filter(Boolean);
-
+  
+  if (compareBar && compareCount) {
+      compareBar.hidden = selectedPrograms.length === 0;
+      compareCount.textContent = selectedPrograms.length;
+    }
+  
   compareEmpty.hidden = selectedPrograms.length > 0;
   compareWrap.hidden = selectedPrograms.length === 0;
 
@@ -637,6 +645,13 @@ document.querySelector("#global-buy-link").addEventListener("click", (event) => 
   event.preventDefault();
   document.querySelector("#programs").scrollIntoView({ behavior: "smooth" });
   showRouteToast("Choose any program card and select Buy plan.");
+});
+
+goCompare?.addEventListener("click", () => {
+  document.querySelector("#compare").scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
 });
 
 renderPrograms();
