@@ -17,10 +17,12 @@
         </span>
       </a>
       <nav class="main-nav" aria-label="Primary navigation">
-        <a href="#programs">Programs</a>
-        <a href="#finder">Find My Fit</a>
-        <a href="#compare">Compare</a>
-      </nav>
+  <a href="index.html">Home</a>
+  <a href="programs.html">Programs</a>
+  <a href="programs.html#finder">Find My Fit</a>
+  <a href="programs.html#compare">Compare</a>
+  <a href="about.html">About Us</a>
+</nav>
       <a class="header-cta" href="#finder">Start Free</a>
     </header>
 
@@ -33,8 +35,8 @@
             Choose a clear workout path, start with a free trial, and move into the full program when you are ready.
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="#finder">Take the questionnaire</a>
-            <a class="button secondary" href="#programs">Browse programs</a>
+            <a class="button primary" href="programs.html#finder">Take the questionnaire</a>
+            <a class="button secondary" href="programs.html">Browse programs</a>
           </div>
         </div>
 
@@ -54,129 +56,6 @@
         </aside>
       </section>
 
-      <section id="programs" class="catalog-section" aria-labelledby="programs-title">
-        <div class="section-heading">
-          <p class="kicker">01 Choose Your Program</p>
-          <h2 id="programs-title">Start where you are. Build from there.</h2>
-          <p>
-            Filter the catalog, compare your short list, or jump straight into a free trial path.
-          </p>
-        </div>
-
-        <div class="toolbar" aria-label="Program filters">
-          <label class="search-field">
-            <span>Search</span>
-            <input id="program-search" type="search" placeholder="Search goals, equipment, or program names">
-          </label>
-
-          <label>
-            <span>Level</span>
-            <select id="level-filter">
-              <option value="all">All levels</option>
-              <option value="Beginner">Beginner</option>
-              <option value="Intermediate">Intermediate</option>
-              <option value="Experienced">Experienced</option>
-              <option value="Athlete">Athlete</option>
-            </select>
-          </label>
-
-          <label>
-            <span>Equipment</span>
-            <select id="equipment-filter">
-              <option value="all">All equipment</option>
-              <option value="None">No equipment</option>
-              <option value="Minimal">Minimal equipment</option>
-              <option value="Garage">Garage gym</option>
-              <option value="Commercial">Commercial gym</option>
-            </select>
-          </label>
-        </div>
-
-        <div id="program-grid" class="program-grid" aria-live="polite"></div>
-      </section>
-
-      <section id="finder" class="finder-section" aria-labelledby="finder-title">
-        <div class="section-heading">
-          <p class="kicker">02 Find My Fit</p>
-          <h2 id="finder-title">Answer four quick questions.</h2>
-          <p>
-            The recommendation favors the program that best matches your experience, time, equipment, and primary goal.
-          </p>
-        </div>
-
-        <div class="finder-layout">
-          <article class="questionnaire" aria-labelledby="question-title">
-            <div class="progress-row">
-              <span id="question-progress">Question 1/4</span>
-              <button id="reset-quiz" class="text-button" type="button">Reset</button>
-            </div>
-            <div class="progress-track" aria-hidden="true">
-              <span id="progress-fill"></span>
-            </div>
-
-            <h3 id="question-title"></h3>
-            <p id="question-help" class="question-help"></p>
-            <div id="answer-list" class="answer-list"></div>
-
-            <div class="quiz-actions">
-              <button id="back-question" class="button secondary" type="button">Back</button>
-              <button id="next-question" class="button primary" type="button">Next</button>
-            </div>
-          </article>
-
-          <aside id="recommendation-panel" class="recommendation-panel" aria-live="polite">
-            <p class="kicker">Recommendation</p>
-            <h3>Your match will appear here.</h3>
-            <p>
-              As you answer, the catalog will narrow toward the path that gives you the clearest next step.
-            </p>
-          </aside>
-        </div>
-      </section>
-
-      <section id="compare" class="compare-section" aria-labelledby="compare-title">
-        <div class="section-heading">
-          <p class="kicker">03 Compare And Continue</p>
-          <h2 id="compare-title">Free trial first. Full program when ready.</h2>
-          <p>
-            Select up to three programs from the catalog to compare, then route visitors to the right trial or purchase path.
-          </p>
-        </div>
-
-        <div class="next-step-grid">
-          <article class="path-panel">
-            <h3>Free Trial Path</h3>
-            <p>
-              Each program has a 7-day sample route designed to feel like a true preview, not just Week 1 copied over.
-            </p>
-            <a id="global-trial-link" class="button primary" href="#programs">Choose a trial</a>
-          </article>
-          <article class="path-panel dark">
-            <h3>Purchase Navigation</h3>
-            <p>
-              Full-program CTAs are wired to placeholder checkout routes so real Stripe links can be added later.
-            </p>
-            <a id="global-buy-link" class="button light" href="#programs">View full programs</a>
-          </article>
-        </div>
-
-        <div class="compare-shell">
-          <div class="compare-head">
-            <h3>Comparison</h3>
-            <button id="clear-compare" class="text-button" type="button">Clear selected</button>
-          </div>
-          <div id="compare-empty" class="empty-state">
-            Choose programs from the cards above to build a side-by-side comparison.
-          </div>
-          <div id="compare-table-wrap" class="table-wrap" hidden>
-            <table id="compare-table">
-              <caption>Selected program comparison</caption>
-              <thead></thead>
-              <tbody></tbody>
-            </table>
-          </div>
-        </div>
-      </section>
     </main>
 
     <div id="route-toast" class="route-toast" role="status" aria-live="polite" hidden></div>
@@ -186,6 +65,5 @@
       <p>Placeholder checkout links can be replaced in <code>app.js</code>.</p>
     </footer>
 
-    <script src="app.js" defer></script>
   </body>
 </html>
