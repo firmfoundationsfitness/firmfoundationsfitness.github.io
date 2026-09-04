@@ -284,7 +284,17 @@ function getFilteredPrograms() {
 }
 
 function renderPrograms() {
-  const visiblePrograms = getFilteredPrograms();
+  if (!grid) return;
+
+  let visiblePrograms = getFilteredPrograms();
+  const isHomeGrid = grid.dataset.home === "true";
+  const filtersAreEmpty = !state.search && state.level === "all" && state.equipment === "all";
+
+  if (isHomeGrid && filtersAreEmpty) {
+    const featuredPrograms = visiblePrograms.filter((program) => program.featured);
+    visiblePrograms = featuredPrograms.length ? featuredPrograms.slice(0, 4) : visiblePrograms.slice(0, 4);
+  }
+
   grid.innerHTML = "";
 
   if (!visiblePrograms.length) {
@@ -594,52 +604,51 @@ function routeTo(programId, path) {
   showRouteToast(`${program.name} ${path === "trial" ? "free trial" : "purchase"} route ready: ${url}`);
 }
 
-searchInput.addEventListener("input", (event) => {
+searchInput?.addEventListener("input", (event) => {
   state.search = event.target.value;
   renderPrograms();
 });
 
-levelFilter.addEventListener("change", (event) => {
+levelFilter?.addEventListener("change", (event) => {
   state.level = event.target.value;
   renderPrograms();
 });
 
-equipmentFilter.addEventListener("change", (event) => {
+equipmentFilter?.addEventListener("change", (event) => {
   state.equipment = event.target.value;
   renderPrograms();
 });
 
-grid.addEventListener("click", (event) => {
+grid?.addEventListener("click", (event) => {
   const routeButton = event.target.closest("[data-route]");
   if (routeButton) {
     routeTo(routeButton.dataset.route, routeButton.dataset.path);
+    return;
   }
-});
 
-grid.addEventListener("change", (event) => {
   const checkbox = event.target.closest("[data-compare]");
   if (checkbox) {
     toggleCompare(checkbox.dataset.compare, checkbox.checked);
   }
 });
 
-answerList.addEventListener("click", (event) => {
+answerList?.addEventListener("click", (event) => {
   const button = event.target.closest(".answer-option");
   if (button) {
     selectAnswer(button.dataset.value);
   }
 });
 
-backQuestion.addEventListener("click", () => {
+backQuestion?.addEventListener("click", () => {
   if (state.questionIndex > 0) {
     state.questionIndex -= 1;
     renderQuestion();
   }
 });
 
-nextQuestion.addEventListener("click", () => {
+nextQuestion?.addEventListener("click", () => {
   if (!canContinue()) {
-    showRouteToast("Choose at least one answer to keep going.");
+    showRouteToast("Choose an answer before moving on.");
     return;
   }
 
@@ -650,47 +659,49 @@ nextQuestion.addEventListener("click", () => {
   }
 
   renderRecommendation();
-  document.querySelector("#recommendation-panel").scrollIntoView({ behavior: "smooth", block: "center" });
+  document.querySelector("#recommendation-panel")?.scrollIntoView({ behavior: "smooth", block: "center" });
 });
 
-resetQuiz.addEventListener("click", () => {
+resetQuiz?.addEventListener("click", () => {
   state.answers = {};
   state.questionIndex = 0;
-  recommendationPanel.innerHTML = `
-    <p class="kicker">Recommendation</p>
-    <h3>Your match will appear here.</h3>
-    <p>As you answer, the catalog will narrow toward the path that gives you the clearest next step.</p>
-  `;
+  if (recommendationPanel) {
+    recommendationPanel.innerHTML = `
+      <p class="kicker">Recommendation</p>
+      <h3>Your match will appear here.</h3>
+      <p>As you answer, the catalog will narrow toward the path that gives you the clearest next step.</p>
+    `;
+  }
   renderQuestion();
 });
 
-clearCompare.addEventListener("click", () => {
+clearCompare?.addEventListener("click", () => {
   state.selectedCompare = [];
   renderPrograms();
   renderCompare();
 });
 
-recommendationPanel.addEventListener("click", (event) => {
-  const routeButton = event.target.closest("[data-route]");
-  if (routeButton) {
-    routeTo(routeButton.dataset.route, routeButton.dataset.path);
+recommendationPanel?.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-route]");
+  if (button) {
+    routeTo(button.dataset.route, button.dataset.path);
   }
 });
 
-document.querySelector("#global-trial-link").addEventListener("click", (event) => {
+document.querySelector("#global-trial-link")?.addEventListener("click", (event) => {
   event.preventDefault();
-  document.querySelector("#programs").scrollIntoView({ behavior: "smooth" });
+  document.querySelector("#programs")?.scrollIntoView({ behavior: "smooth" });
   showRouteToast("Choose any program card and select Free trial.");
 });
 
-document.querySelector("#global-buy-link").addEventListener("click", (event) => {
+document.querySelector("#global-buy-link")?.addEventListener("click", (event) => {
   event.preventDefault();
-  document.querySelector("#programs").scrollIntoView({ behavior: "smooth" });
+  document.querySelector("#programs")?.scrollIntoView({ behavior: "smooth" });
   showRouteToast("Choose any program card and select Buy plan.");
 });
 
 goCompare?.addEventListener("click", () => {
-  document.querySelector("#compare").scrollIntoView({
+  document.querySelector("#compare")?.scrollIntoView({
     behavior: "smooth",
     block: "start"
   });
