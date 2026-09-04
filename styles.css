@@ -130,33 +130,35 @@ select {
 }
 
 .free-trial-section {
-  background: var(--blue-dark);
-  color: #fff;
+  background: var(--blue-light);
+  color: var(--ink);
 }
 
 .free-trial-section .section-heading h2 {
-  color: #fff;
+  color: var(--ink);
 }
 
 .free-trial-section .section-heading p,
 .free-trial-section .kicker {
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--ink);
 }
 
 .free-trial-section .button.primary {
-  background: #fff;
-  color: var(--ink);
-  border-color: #fff;
+  background: var(--ink);
+  color: #fff;
+  border-color: var(--ink);
 }
 
 .free-trial-section .button.secondary {
-  background: transparent;
+  background: var(--blue);
   color: #fff;
-  border-color: #fff;
+  border-color: var(--blue);
 }
 
 .free-trial-section .button.primary:hover,
-.free-trial-section .button.secondary:hover {
+.free-trial-section .button.secondary:hover,
+.free-trial-section .button.primary:focus-visible,
+.free-trial-section .button.secondary:focus-visible {
   transform: translateY(-2px);
 }
 
