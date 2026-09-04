@@ -288,11 +288,9 @@ function renderPrograms() {
 
   let visiblePrograms = getFilteredPrograms();
   const isHomeGrid = grid.dataset.home === "true";
-  const filtersAreEmpty = !state.search && state.level === "all" && state.equipment === "all";
 
-  if (isHomeGrid && filtersAreEmpty) {
-    const featuredPrograms = visiblePrograms.filter((program) => program.featured);
-    visiblePrograms = featuredPrograms.length ? featuredPrograms.slice(0, 4) : visiblePrograms.slice(0, 4);
+  if (isHomeGrid && !state.search && state.level === "all" && state.equipment === "all") {
+    visiblePrograms = visiblePrograms.slice(0, 4);
   }
 
   grid.innerHTML = "";
@@ -334,15 +332,17 @@ function renderPrograms() {
 }
 
 function renderCompare() {
+  if (!compareEmpty || !compareWrap || !compareTable) return;
+
   const selectedPrograms = state.selectedCompare
     .map((id) => programs.find((program) => program.id === id))
     .filter(Boolean);
-  
+
   if (compareBar && compareCount) {
-      compareBar.hidden = selectedPrograms.length === 0;
-      compareCount.textContent = selectedPrograms.length;
-    }
-  
+    compareBar.hidden = selectedPrograms.length === 0;
+    compareCount.textContent = selectedPrograms.length;
+  }
+
   compareEmpty.hidden = selectedPrograms.length > 0;
   compareWrap.hidden = selectedPrograms.length === 0;
 
@@ -398,6 +398,8 @@ function toggleCompare(programId, checked) {
 }
 
 function renderQuestion() {
+  if (!questionProgress || !progressFill || !questionTitle || !questionHelp || !answerList || !backQuestion || !nextQuestion) return;
+
   const question = questions[state.questionIndex];
   const currentAnswer = state.answers[question.key] || (question.mode === "multi" ? [] : "");
 
@@ -413,6 +415,7 @@ function renderQuestion() {
     const selected = Array.isArray(currentAnswer)
       ? currentAnswer.includes(option.value)
       : currentAnswer === option.value;
+
     const button = document.createElement("button");
     button.className = "answer-option";
     button.type = "button";
@@ -461,37 +464,25 @@ function scoreProgram(program) {
   const considerations = state.answers.considerations || [];
 
   if (experience === "first-time") {
-    if (program.goals.includes("first-time")) {
-      score += 7;
-      reasons.push("It is built for a true starting point.");
-    }
-    if (program.level === "Beginner") {
-      score += 4;
-    }
+    if (program.goals.includes("first-time") || program.goals.includes("beginner")) score += 7;
+    if (program.level === "Beginner") score += 4;
+    reasons.push("It gives you a clear starting point.");
   }
 
   if (experience === "getting-back") {
-    if (program.goals.includes("getting-back") || program.goals.includes("consistency")) {
-      score += 5;
-      reasons.push("It helps rebuild rhythm without overcomplicating the process.");
-    }
-    if (["Beginner", "Intermediate"].includes(program.level)) {
-      score += 3;
-    }
+    if (program.goals.includes("getting-back") || program.goals.includes("consistency")) score += 6;
+    if (["Beginner", "Intermediate"].includes(program.level)) score += 3;
+    reasons.push("It helps rebuild rhythm without overcomplicating the process.");
   }
 
-  if (experience === "intermediate") {
-    if (["Intermediate", "Experienced"].includes(program.level)) {
-      score += 4;
-      reasons.push("The difficulty matches someone who already has some training rhythm.");
-    }
+  if (experience === "intermediate" && ["Intermediate", "Experienced"].includes(program.level)) {
+    score += 5;
+    reasons.push("The difficulty matches someone who already has some training rhythm.");
   }
 
-  if (experience === "experienced") {
-    if (["Experienced", "Athlete"].includes(program.level)) {
-      score += 5;
-      reasons.push("It has enough challenge to make progress feel meaningful.");
-    }
+  if (experience === "experienced" && ["Experienced", "Athlete"].includes(program.level)) {
+    score += 5;
+    reasons.push("It has enough challenge to make progress feel meaningful.");
   }
 
   if (primaryGoal && program.goals.includes(primaryGoal)) {
@@ -507,9 +498,7 @@ function scoreProgram(program) {
   };
 
   equipment.forEach((item) => {
-    if (equipmentMap[item]?.includes(program.equipment)) {
-      score += 3;
-    }
+    if (equipmentMap[item]?.includes(program.equipment)) score += 3;
   });
 
   if (time === "short" && ["15-25 min", "15-30 min", "20-30 min"].includes(program.time)) {
@@ -544,9 +533,7 @@ function scoreProgram(program) {
     reasons.push("It has stronger carryover for athletic performance.");
   }
 
-  if (program.featured) {
-    score += 1;
-  }
+  if (program.featured) score += 1;
 
   return {
     ...program,
@@ -556,9 +543,12 @@ function scoreProgram(program) {
 }
 
 function renderRecommendation() {
+  if (!recommendationPanel) return;
+
   const scored = programs
     .map(scoreProgram)
     .sort((a, b) => b.score - a.score);
+
   const top = scored[0];
   const alternatives = scored.slice(1, 3);
   const percent = Math.max(76, Math.min(98, Math.round((top.score / (top.score + 8)) * 100)));
@@ -588,6 +578,8 @@ function renderRecommendation() {
 }
 
 function showRouteToast(message) {
+  if (!routeToast) return;
+
   routeToast.textContent = message;
   routeToast.hidden = false;
   window.clearTimeout(showRouteToast.timeout);
@@ -599,9 +591,9 @@ function showRouteToast(message) {
 function routeTo(programId, path) {
   const program = programs.find((item) => item.id === programId);
   if (!program) return;
+
   const url = programLinks[programId][path];
-  window.location.hash = `${path}-${programId}`;
-  showRouteToast(`${program.name} ${path === "trial" ? "free trial" : "purchase"} route ready: ${url}`);
+  window.location.href = url;
 }
 
 searchInput?.addEventListener("input", (event) => {
@@ -665,6 +657,7 @@ nextQuestion?.addEventListener("click", () => {
 resetQuiz?.addEventListener("click", () => {
   state.answers = {};
   state.questionIndex = 0;
+
   if (recommendationPanel) {
     recommendationPanel.innerHTML = `
       <p class="kicker">Recommendation</p>
@@ -672,6 +665,7 @@ resetQuiz?.addEventListener("click", () => {
       <p>As you answer, the catalog will narrow toward the path that gives you the clearest next step.</p>
     `;
   }
+
   renderQuestion();
 });
 
