@@ -1200,3 +1200,9 @@ code {
     width: 100%;
   }
 }
+
+.free-trial-section .section-heading p,
+.free-trial-section p {
+  color: #000 !important;
+  font-weight: 900;
+}
