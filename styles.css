@@ -130,36 +130,45 @@ select {
 }
 
 .free-trial-section {
-  background: var(--blue-light);
-  color: var(--ink);
+  background: var(--blue);
+  color: #000;
 }
 
-.free-trial-section .section-heading h2 {
-  color: var(--ink);
+.free-trial-section .kicker,
+.free-trial-section h2,
+.free-trial-section h3 {
+  color: #fff;
 }
 
-.free-trial-section .section-heading p,
-.free-trial-section .kicker {
-  color: var(--ink);
+.free-trial-section .section-heading p {
+  color: #000;
+  font-weight: 750;
 }
 
 .free-trial-section .button.primary {
-  background: var(--ink);
+  background: #000;
   color: #fff;
-  border-color: var(--ink);
+  border-color: #000;
 }
 
 .free-trial-section .button.secondary {
-  background: var(--blue);
-  color: #fff;
-  border-color: var(--blue);
+  background: #fff;
+  color: #000;
+  border-color: #fff;
 }
 
 .free-trial-section .button.primary:hover,
+.free-trial-section .button.primary:focus-visible {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+}
+
 .free-trial-section .button.secondary:hover,
-.free-trial-section .button.primary:focus-visible,
 .free-trial-section .button.secondary:focus-visible {
-  transform: translateY(-2px);
+  background: #f3f8fb;
+  color: #000;
+  border-color: #fff;
 }
 
 .quick-about-section {
