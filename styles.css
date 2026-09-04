@@ -1078,3 +1078,116 @@ code {
     bottom: 18px;
   }
 }
+
+.coming-soon-page {
+  min-height: calc(100vh - 80px);
+  background:
+    linear-gradient(135deg, rgba(5, 8, 12, 0.9), rgba(11, 75, 120, 0.88)),
+    var(--ink);
+  color: #fff;
+}
+
+.coming-soon-hero {
+  display: grid;
+  place-items: center;
+  min-height: calc(100vh - 160px);
+  padding: clamp(48px, 8vw, 96px) clamp(18px, 4vw, 56px);
+}
+
+.coming-soon-card {
+  width: min(980px, 100%);
+  padding: clamp(28px, 5vw, 56px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(14px);
+}
+
+.coming-soon-card h1 {
+  max-width: 760px;
+  margin: 0;
+  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  line-height: 0.95;
+  letter-spacing: 0;
+}
+
+.coming-soon-card p {
+  max-width: 720px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 1.08rem;
+}
+
+.coming-soon-details {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin: 32px 0;
+}
+
+.coming-soon-details div {
+  display: grid;
+  gap: 6px;
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.coming-soon-details strong {
+  color: #fff;
+}
+
+.coming-soon-details span {
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.coming-soon-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.coming-soon-actions .button.primary {
+  background: #fff;
+  color: var(--ink);
+  border-color: #fff;
+}
+
+.coming-soon-actions .button.secondary {
+  background: transparent;
+  color: #fff;
+  border-color: #fff;
+}
+
+@media (max-width: 760px) {
+  .coming-soon-page {
+    min-height: auto;
+  }
+
+  .coming-soon-hero {
+    min-height: auto;
+    place-items: stretch;
+    padding: 42px 18px;
+  }
+
+  .coming-soon-card {
+    padding: 24px;
+  }
+
+  .coming-soon-card h1 {
+    font-size: 2.8rem;
+  }
+
+  .coming-soon-details {
+    grid-template-columns: 1fr;
+  }
+
+  .coming-soon-actions {
+    flex-direction: column;
+  }
+
+  .coming-soon-actions .button {
+    width: 100%;
+  }
+}
