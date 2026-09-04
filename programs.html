@@ -56,6 +56,52 @@
   </aside>
 </section>
 
+<section id="programs" class="catalog-section" aria-labelledby="programs-title">
+  <div class="section-heading">
+    <p class="kicker">01 Choose Your Program</p>
+    <h2 id="programs-title">Start where you are. Build from there.</h2>
+    <p>
+      Filter the catalog, compare your short list, or jump straight into a free trial path.
+    </p>
+  </div>
+
+  <div class="toolbar" aria-label="Program filters">
+    <label class="search-field">
+      <span>Search</span>
+      <input id="program-search" type="search" placeholder="Search goals, equipment, or program names">
+    </label>
+
+    <label>
+      <span>Level</span>
+      <select id="level-filter">
+        <option value="all">All levels</option>
+        <option value="Beginner">Beginner</option>
+        <option value="Intermediate">Intermediate</option>
+        <option value="Experienced">Experienced</option>
+        <option value="Athlete">Athlete</option>
+      </select>
+    </label>
+
+    <label>
+      <span>Equipment</span>
+      <select id="equipment-filter">
+        <option value="all">All equipment</option>
+        <option value="None">No equipment</option>
+        <option value="Minimal">Minimal equipment</option>
+        <option value="Garage">Garage gym</option>
+        <option value="Commercial">Commercial gym</option>
+      </select>
+    </label>
+  </div>
+
+  <div id="program-grid" class="program-grid" aria-live="polite"></div>
+
+  <div id="compare-bar" class="compare-bar" hidden>
+    <strong><span id="compare-count">0</span> selected for comparison</strong>
+    <button id="go-compare" class="button primary" type="button">Compare selected programs</button>
+  </div>
+</section>
+      
      <section id="programs" class="catalog-section" aria-labelledby="programs-title">
   <div class="section-heading">
     <p class="kicker">01 Choose Your Program</p>
@@ -192,3 +238,7 @@
       <p>Firm Foundations | Strength starts here.</p>
       <p>Placeholder checkout links can be replaced in <code>app.js</code>.</p>
     </footer>
+
+    <script src="app.js" defer></script>
+</body>
+</html>
