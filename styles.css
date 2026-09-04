@@ -122,10 +122,52 @@ select {
 .about-hero,
 .about-section,
 .about-band,
-.about-grid-section {
+.about-grid-section,
+.free-trial-section,
+.quick-about-section,
+.testimonials-section {
   padding: clamp(56px, 8vw, 104px) clamp(18px, 4vw, 56px);
 }
 
+.free-trial-section {
+  background: var(--blue);
+  color: #fff;
+}
+
+.free-trial-section .section-heading p,
+.free-trial-section .kicker {
+  color: rgba(255, 255, 255, 0.84);
+}
+
+.quick-about-section {
+  background: var(--soft);
+}
+
+.testimonials-section {
+  background: #fff;
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.testimonial-card {
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--soft);
+}
+
+.testimonial-card p {
+  margin-top: 0;
+  color: var(--muted);
+}
+
+.testimonial-card strong {
+  color: var(--blue-dark);
+}
 .about-hero {
   background: var(--ink);
   color: #fff;
@@ -889,5 +931,11 @@ code {
 
   .about-hero h1 {
     font-size: 3rem;
+  }
+}
+
+@media (max-width: 1120px) {
+  .testimonial-grid {
+    grid-template-columns: 1fr;
   }
 }
