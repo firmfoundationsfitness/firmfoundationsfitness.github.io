@@ -165,15 +165,16 @@ select {
 }
 
 .quick-about-section .button.secondary {
-  background: #fff;
-  color: var(--blue-dark);
-  border: 2px solid var(--blue-dark);
+  background: var(--blue);
+  color: #fff;
+  border: 2px solid #fff;
 }
 
 .quick-about-section .button.secondary:hover,
 .quick-about-section .button.secondary:focus-visible {
   background: var(--blue-dark);
   color: #fff;
+  border-color: #fff;
 }
 
 .testimonials-section {
