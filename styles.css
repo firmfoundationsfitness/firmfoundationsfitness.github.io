@@ -141,8 +141,8 @@ select {
 }
 
 .free-trial-section .section-heading p {
-  color: #fff;
-  font-weight: 750;
+  color: #000;
+  font-weight: 850;
 }
 
 .free-trial-section .button.primary {
