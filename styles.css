@@ -164,6 +164,18 @@ select {
   background: var(--soft);
 }
 
+.quick-about-section .button.secondary {
+  background: #fff;
+  color: var(--blue-dark);
+  border: 2px solid var(--blue-dark);
+}
+
+.quick-about-section .button.secondary:hover,
+.quick-about-section .button.secondary:focus-visible {
+  background: var(--blue-dark);
+  color: #fff;
+}
+
 .testimonials-section {
   background: #fff;
 }
