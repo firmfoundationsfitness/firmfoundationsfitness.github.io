@@ -130,13 +130,34 @@ select {
 }
 
 .free-trial-section {
-  background: var(--blue);
+  background: var(--blue-dark);
+  color: #fff;
+}
+
+.free-trial-section .section-heading h2 {
   color: #fff;
 }
 
 .free-trial-section .section-heading p,
 .free-trial-section .kicker {
-  color: rgba(255, 255, 255, 0.84);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.free-trial-section .button.primary {
+  background: #fff;
+  color: var(--ink);
+  border-color: #fff;
+}
+
+.free-trial-section .button.secondary {
+  background: transparent;
+  color: #fff;
+  border-color: #fff;
+}
+
+.free-trial-section .button.primary:hover,
+.free-trial-section .button.secondary:hover {
+  transform: translateY(-2px);
 }
 
 .quick-about-section {
