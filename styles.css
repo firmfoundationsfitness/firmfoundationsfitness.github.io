@@ -1213,11 +1213,11 @@ code {
     grid-template-columns: 1fr 1fr;
   }
 
-  #next-question {
+  #back-question {
     order: 1;
   }
 
-  #back-question {
+  #next-question {
     order: 2;
   }
 }
