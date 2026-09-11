@@ -35,10 +35,20 @@ const programLinks = {
     trial: "/coming-soon.html?program=The%20Hybrid%20Foundation&path=free-trial",
     purchase: "/coming-soon.html?program=The%20Hybrid%20Foundation&path=full-program"
   },
-  mobility: {
+   mobility: {
     trial: "/coming-soon.html?program=Mobility%20Foundation&path=free-trial",
     purchase: "/coming-soon.html?program=Mobility%20Foundation&path=full-program"
+  },
+  advancedStrength: {
+    trial: "/coming-soon.html?program=Advanced%20Strength&path=free-trial",
+    purchase: "/coming-soon.html?program=Advanced%20Strength&path=full-program"
+  },
+  hypertrophy: {
+    trial: "/coming-soon.html?program=Hypertrophy&path=free-trial",
+    purchase: "/coming-soon.html?program=Hypertrophy&path=full-program"
   }
+};
+  
 };
 
 const programs = [
@@ -152,6 +162,7 @@ const programs = [
     goals: ["hybrid", "conditioning", "strength", "commercial"]
   },
   {
+      {
     id: "mobility",
     name: "Mobility Foundation",
     level: "Beginner",
@@ -162,6 +173,30 @@ const programs = [
     bestFor: "Anyone who wants to move better before training harder.",
     summary: "Focused mobility and control sessions that pair well with any strength or running plan.",
     goals: ["mobility", "joint-friendly", "limited-time", "beginner"]
+  },
+  {
+    id: "advancedStrength",
+    name: "Advanced Strength",
+    level: "Experienced",
+    duration: "10 weeks",
+    time: "45-60 min",
+    equipment: "Commercial",
+    price: "$30",
+    bestFor: "Advanced lifters who want a focused strength progression.",
+    summary: "A heavier, gym-based program built around progressive overload, compound lifts, and measurable strength gains.",
+    goals: ["strength", "experienced", "commercial"]
+  },
+  {
+    id: "hypertrophy",
+    name: "Hypertrophy",
+    level: "Experienced",
+    duration: "10 weeks",
+    time: "45-60 min",
+    equipment: "Commercial",
+    price: "$30",
+    bestFor: "Advanced lifters who want to build muscle with structure.",
+    summary: "A muscle-building plan focused on volume, intensity, controlled progression, and upper/lower training variety.",
+    goals: ["hypertrophy", "strength", "experienced", "commercial"]
   }
 ];
 
