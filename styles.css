@@ -1206,3 +1206,18 @@ code {
   color: #000 !important;
   font-weight: 900;
 }
+
+@media (max-width: 760px) {
+  .quiz-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  #next-question {
+    order: 1;
+  }
+
+  #back-question {
+    order: 2;
+  }
+}
