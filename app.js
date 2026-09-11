@@ -1,54 +1,52 @@
 const programLinks = {
   foundations: {
-    trial: "/coming-soon.html?program=Foundations&path=free-trial",
-    purchase: "/coming-soon.html?program=Foundations&path=full-program"
+    trial: "coming-soon.html?program=Foundations&path=free-trial",
+    purchase: "coming-soon.html?program=Foundations&path=full-program"
   },
   athlete: {
-    trial: "/coming-soon.html?program=Athlete&path=free-trial",
-    purchase: "/coming-soon.html?program=Athlete&path=full-program"
+    trial: "coming-soon.html?program=Athlete&path=free-trial",
+    purchase: "coming-soon.html?program=Athlete&path=full-program"
   },
   busy: {
-    trial: "/coming-soon.html?program=Busy%20People&path=free-trial",
-    purchase: "/coming-soon.html?program=Busy%20People&path=full-program"
+    trial: "coming-soon.html?program=Busy%20People&path=free-trial",
+    purchase: "coming-soon.html?program=Busy%20People&path=full-program"
   },
   firstTimers: {
-    trial: "/coming-soon.html?program=First-Timers&path=free-trial",
-    purchase: "/coming-soon.html?program=First-Timers&path=full-program"
+    trial: "coming-soon.html?program=First-Timers&path=free-trial",
+    purchase: "coming-soon.html?program=First-Timers&path=full-program"
   },
   fortyPlus: {
-    trial: "/coming-soon.html?program=Foundations%2040%2B&path=free-trial",
-    purchase: "/coming-soon.html?program=Foundations%2040%2B&path=full-program"
+    trial: "coming-soon.html?program=Foundations%2040%2B&path=free-trial",
+    purchase: "coming-soon.html?program=Foundations%2040%2B&path=full-program"
   },
   deskToStrong: {
-    trial: "/coming-soon.html?program=Desk%20to%20Strong&path=free-trial",
-    purchase: "/coming-soon.html?program=Desk%20to%20Strong&path=full-program"
+    trial: "coming-soon.html?program=Desk%20to%20Strong&path=free-trial",
+    purchase: "coming-soon.html?program=Desk%20to%20Strong&path=full-program"
   },
   runStrong: {
-    trial: "/coming-soon.html?program=Run%20Strong&path=free-trial",
-    purchase: "/coming-soon.html?program=Run%20Strong&path=full-program"
+    trial: "coming-soon.html?program=Run%20Strong&path=free-trial",
+    purchase: "coming-soon.html?program=Run%20Strong&path=full-program"
   },
   garageAthlete: {
-    trial: "/coming-soon.html?program=Garage%20Athlete&path=free-trial",
-    purchase: "/coming-soon.html?program=Garage%20Athlete&path=full-program"
+    trial: "coming-soon.html?program=Garage%20Athlete&path=free-trial",
+    purchase: "coming-soon.html?program=Garage%20Athlete&path=full-program"
   },
   hybrid: {
-    trial: "/coming-soon.html?program=The%20Hybrid%20Foundation&path=free-trial",
-    purchase: "/coming-soon.html?program=The%20Hybrid%20Foundation&path=full-program"
+    trial: "coming-soon.html?program=The%20Hybrid%20Foundation&path=free-trial",
+    purchase: "coming-soon.html?program=The%20Hybrid%20Foundation&path=full-program"
   },
-   mobility: {
-    trial: "/coming-soon.html?program=Mobility%20Foundation&path=free-trial",
-    purchase: "/coming-soon.html?program=Mobility%20Foundation&path=full-program"
+  mobility: {
+    trial: "coming-soon.html?program=Mobility%20Foundation&path=free-trial",
+    purchase: "coming-soon.html?program=Mobility%20Foundation&path=full-program"
   },
   advancedStrength: {
-    trial: "/coming-soon.html?program=Advanced%20Strength&path=free-trial",
-    purchase: "/coming-soon.html?program=Advanced%20Strength&path=full-program"
+    trial: "coming-soon.html?program=Advanced%20Strength&path=free-trial",
+    purchase: "coming-soon.html?program=Advanced%20Strength&path=full-program"
   },
   hypertrophy: {
-    trial: "/coming-soon.html?program=Hypertrophy&path=free-trial",
-    purchase: "/coming-soon.html?program=Hypertrophy&path=full-program"
+    trial: "coming-soon.html?program=Hypertrophy&path=free-trial",
+    purchase: "coming-soon.html?program=Hypertrophy&path=full-program"
   }
-};
-  
 };
 
 const programs = [
@@ -75,7 +73,7 @@ const programs = [
     price: "$30",
     bestFor: "Athletes chasing power, explosiveness, and rotation.",
     summary: "A functional gym-based plan built around strength, speed, rotational work, and smart substitutions.",
-    goals: ["power", "strength", "athletic", "commercial"]
+    goals: ["power", "strength", "sport", "commercial"]
   },
   {
     id: "busy",
@@ -87,7 +85,7 @@ const programs = [
     price: "$30",
     bestFor: "Parents and busy people who need simple wins at home.",
     summary: "Short, low-friction workouts that make consistency realistic when time and energy are limited.",
-    goals: ["limited-time", "consistency", "home", "beginner"]
+    goals: ["busy", "consistency", "home", "beginner"]
   },
   {
     id: "firstTimers",
@@ -99,7 +97,7 @@ const programs = [
     price: "$30",
     bestFor: "People starting from zero who need a gentle first step.",
     summary: "A simple ramp-up plan with clear movement practice, recovery, and early confidence built in.",
-    goals: ["first-time", "beginner", "home", "limited-time"]
+    goals: ["first-time", "beginner", "home", "busy"]
   },
   {
     id: "fortyPlus",
@@ -162,7 +160,6 @@ const programs = [
     goals: ["hybrid", "conditioning", "strength", "commercial"]
   },
   {
-      {
     id: "mobility",
     name: "Mobility Foundation",
     level: "Beginner",
@@ -172,7 +169,7 @@ const programs = [
     price: "$30",
     bestFor: "Anyone who wants to move better before training harder.",
     summary: "Focused mobility and control sessions that pair well with any strength or running plan.",
-    goals: ["mobility", "joint-friendly", "limited-time", "beginner"]
+    goals: ["mobility", "joint-friendly", "busy", "beginner"]
   },
   {
     id: "advancedStrength",
@@ -221,6 +218,7 @@ const questions = [
     options: [
       { label: "Build consistency", value: "consistency", detail: "I want something realistic I can stick with." },
       { label: "Get stronger", value: "strength", detail: "I want measurable strength progress." },
+      { label: "Build muscle", value: "hypertrophy", detail: "I want size, shape, and muscle-focused training." },
       { label: "Improve athletic performance", value: "power", detail: "I want explosiveness, speed, and rotation." },
       { label: "Move and feel better", value: "mobility", detail: "I want mobility, control, and joint-friendly training." },
       { label: "Support running/cardio", value: "running", detail: "I want strength that supports endurance." }
@@ -281,6 +279,9 @@ const compareEmpty = document.querySelector("#compare-empty");
 const compareWrap = document.querySelector("#compare-table-wrap");
 const compareTable = document.querySelector("#compare-table");
 const clearCompare = document.querySelector("#clear-compare");
+const compareBar = document.querySelector("#compare-bar");
+const compareCount = document.querySelector("#compare-count");
+const goCompare = document.querySelector("#go-compare");
 const questionProgress = document.querySelector("#question-progress");
 const progressFill = document.querySelector("#progress-fill");
 const questionTitle = document.querySelector("#question-title");
@@ -291,9 +292,6 @@ const nextQuestion = document.querySelector("#next-question");
 const resetQuiz = document.querySelector("#reset-quiz");
 const recommendationPanel = document.querySelector("#recommendation-panel");
 const routeToast = document.querySelector("#route-toast");
-const compareBar = document.querySelector("#compare-bar");
-const compareCount = document.querySelector("#compare-count");
-const goCompare = document.querySelector("#go-compare");
 
 function getSearchBlob(program) {
   return [
@@ -627,8 +625,7 @@ function routeTo(programId, path) {
   const program = programs.find((item) => item.id === programId);
   if (!program) return;
 
-  const url = programLinks[programId][path];
-  window.location.href = url;
+  window.location.href = programLinks[programId][path];
 }
 
 searchInput?.addEventListener("input", (event) => {
