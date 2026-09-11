@@ -1221,3 +1221,25 @@ code {
     order: 2;
   }
 }
+
+@media (max-width: 760px) {
+  .finder-section .quiz-actions {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+  }
+
+  .finder-section #back-question {
+    order: 1 !important;
+    grid-column: 1 !important;
+  }
+
+  .finder-section #next-question {
+    order: 2 !important;
+    grid-column: 2 !important;
+  }
+
+  .finder-section .quiz-actions .button {
+    width: 100% !important;
+  }
+}
