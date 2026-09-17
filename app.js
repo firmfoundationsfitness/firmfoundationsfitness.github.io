@@ -306,13 +306,6 @@ function getSearchBlob(program) {
   ].join(" ").toLowerCase();
 }
 
-const equipmentLabels = {
-  None: "No Equipment Required",
-  Minimal: "Minimal Equipment Required",
-  Garage: "Equipment Required",
-  Commercial: "Commercial Gym Required"
-};
-
 function getFilteredPrograms() {
   const query = state.search.trim().toLowerCase();
   return programs.filter((program) => {
@@ -346,7 +339,7 @@ function renderPrograms() {
     card.innerHTML = `
       <header>
         <div class="program-eyebrow">
-          <span class="tag">${equipmentLabels[program.equipment]}</span>
+          <span class="tag">${program.level}</span>
           <span class="tag">${program.equipment}</span>
           <span class="tag">${program.duration}</span>
         </div>
