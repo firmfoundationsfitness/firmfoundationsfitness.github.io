@@ -306,6 +306,13 @@ function getSearchBlob(program) {
   ].join(" ").toLowerCase();
 }
 
+const equipmentLabels = {
+  None: "No Equipment Required",
+  Minimal: "Light Equipment Required",
+  Garage: "Equipment Required",
+  Commercial: "Commercial Gym"
+};
+
 function getFilteredPrograms() {
   const query = state.search.trim().toLowerCase();
   return programs.filter((program) => {
@@ -340,7 +347,7 @@ function renderPrograms() {
       <header>
         <div class="program-eyebrow">
           <span class="tag">${program.level}</span>
-          <span class="tag">${program.equipment}</span>
+          <span class="tag">${equipmentLabels[program.equipment]}</span>
           <span class="tag">${program.duration}</span>
         </div>
         <h3>${program.name}</h3>
