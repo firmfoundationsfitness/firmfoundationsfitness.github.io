@@ -335,7 +335,7 @@ function renderPrograms() {
 
   visiblePrograms.forEach((program) => {
     const card = document.createElement("article");
-    card.className = `program-card${program.featured ? " featured" : ""}`;
+    card.className = "program-card featured";
     card.innerHTML = `
       <header>
         <div class="program-eyebrow">
